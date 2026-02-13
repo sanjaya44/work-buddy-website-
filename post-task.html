@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Task - TaskLanka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <div id="header-container"></div>
+
+    <div class="max-w-3xl mx-auto py-12 px-4 sm:px-6 lg:px-8 w-full">
+        <div class="bg-white shadow-xl rounded-2xl overflow-hidden">
+            <div class="bg-blue-600 py-6 px-8">
+                <h1 class="text-3xl font-bold text-white">Post a new task</h1>
+                <p class="text-blue-100 mt-2">Get offers from skilled people near you.</p>
+            </div>
+
+            <form action="index.html" class="p-8 space-y-6">
+                <!-- Hidden input to simulate success message on redirect -->
+                <input type="hidden" name="msg" value="posted">
+
+                <!-- Title -->
+                <div>
+                    <label for="task-title" class="block text-sm font-medium text-gray-700">What do you need
+                        done?</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                        <input type="text" name="task-title" id="task-title"
+                            class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-4 pr-12 sm:text-sm border-gray-300 rounded-md py-3 border"
+                            placeholder="e.g. Clean my 2-bedroom apartment" required>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-700">Details</label>
+                    <div class="mt-1">
+                        <textarea id="description" name="description" rows="4"
+                            class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border border-gray-300 rounded-md p-3"
+                            placeholder="Provide more details about your task so Taskers can give you accurate offers."
+                            required></textarea>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                    <!-- Category -->
+                    <div class="sm:col-span-3">
+                        <label for="category" class="block text-sm font-medium text-gray-700">Category</label>
+                        <div class="mt-1">
+                            <select id="category" name="category"
+                                class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md py-3 px-3 border"
+                                required>
+                                <option value="" disabled selected>Select a category</option>
+                                <option>Cleaning</option>
+                                <option>Moving</option>
+                                <option>Gardening</option>
+                                <option>Repairs</option>
+                                <option>Technology</option>
+                                <option>Photography</option>
+                                <option>Tutoring</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="sm:col-span-3">
+                        <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+                        <div class="mt-1 relative rounded-md shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <input type="text" name="location" id="location"
+                                class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md py-3 border"
+                                placeholder="Suburb or Postcode" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                    <!-- Date -->
+                    <div class="sm:col-span-3">
+                        <label for="date" class="block text-sm font-medium text-gray-700">When do you need it?</label>
+                        <div class="mt-1 relative rounded-md shadow-sm">
+                            <input type="text" name="date" id="date"
+                                class="focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md py-3 px-4 border"
+                                placeholder="Select date" required>
+                        </div>
+                    </div>
+
+                    <!-- Budget -->
+                    <div class="sm:col-span-3">
+                        <label for="budget" class="block text-sm font-medium text-gray-700">Budget (LKR)</label>
+                        <div class="mt-1 relative rounded-md shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <span class="text-gray-500 sm:text-sm">Rs.</span>
+                            </div>
+                            <input type="number" name="budget" id="budget"
+                                class="focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 pr-12 sm:text-sm border-gray-300 rounded-md py-3 border"
+                                placeholder="0.00" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex items-center justify-end">
+                    <a href="index.html"
+                        class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-3">Cancel</a>
+                    <button type="submit"
+                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Post
+                        Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        flatpickr("#date", {
+            minDate: "today",
+            dateFormat: "Y-m-d",
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details - TaskLanka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <div id="header-container"></div>
+
+    <main class="flex-grow max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8 w-full">
+        <div id="task-details-container" class="bg-white shadow overflow-hidden sm:rounded-lg mb-8">
+            <div class="px-4 py-5 sm:px-6 text-center">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-600"></div>
+                <p class="mt-2 text-gray-500">Loading task details...</p>
+            </div>
+        </div>
+
+        <!-- Offer Modal (Hidden by default) -->
+        <div id="offer-modal" class="fixed z-50 inset-0 overflow-y-auto hidden" aria-labelledby="modal-title"
+            role="dialog" aria-modal="true">
+            <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"
+                    onclick="toggleModal()"></div>
+                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                <div
+                    class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                        <div class="sm:flex sm:items-start">
+                            <div
+                                class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                                <svg class="h-6 w-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                                <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Make an Offer
+                                </h3>
+                                <div class="mt-2">
+                                    <p class="text-sm text-gray-500">How much would you like to offer for this task?</p>
+                                    <div class="mt-4">
+                                        <label for="offer-amount" class="block text-sm font-medium text-gray-700">Your
+                                            Offer (LKR)</label>
+                                        <input type="number" name="offer-amount" id="offer-amount"
+                                            class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md py-2 px-3 border mt-1"
+                                            placeholder="e.g. 5000">
+                                    </div>
+                                    <div class="mt-4">
+                                        <label for="offer-message"
+                                            class="block text-sm font-medium text-gray-700">Message</label>
+                                        <textarea id="offer-message" rows="3"
+                                            class="shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md py-2 px-3 border mt-1"
+                                            placeholder="Why are you the best person for this task?"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                        <button type="button"
+                            class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm"
+                            onclick="submitOffer()">
+                            Send Offer
+                        </button>
+                        <button type="button"
+                            class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                            onclick="toggleModal()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        function toggleModal() {
+            const modal = document.getElementById('offer-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function submitOffer() {
+            toggleModal();
+            alert('Offer sent successfully! The poster will be notified.');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const taskId = parseInt(params.get('id')); // IDs are numbers in dummy data
+
+            if (taskId && window.dummyTasks) {
+                const task = window.dummyTasks.find(t => t.id === taskId);
+                const container = document.getElementById('task-details-container');
+
+                if (task) {
+                    container.innerHTML = `
+                         <div class="px-4 py-5 sm:px-6 flex justify-between items-center bg-gray-50 border-b border-gray-200">
+                            <div>
+                                <h3 class="text-2xl leading-6 font-bold text-gray-900">${task.title}</h3>
+                                <p class="mt-1 max-w-2xl text-sm text-gray-500">Posted by <span class="font-medium text-gray-900">${task.postedBy}</span> on ${task.date}</p>
+                            </div>
+                            <span class="px-4 py-2 rounded-full text-sm font-semibold bg-green-100 text-green-800">${task.status}</span>
+                        </div>
+                        <div class="border-t border-gray-200">
+                            <dl>
+                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">Category</dt>
+                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">${task.category}</dd>
+                                </div>
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">Location</dt>
+                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">${task.location}</dd>
+                                </div>
+                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">Budget</dt>
+                                    <dd class="mt-1 text-xl font-bold text-green-600 sm:mt-0 sm:col-span-2">${task.price}</dd>
+                                </div>
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">Details</dt>
+                                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 whitespace-pre-wrap">${task.description}</dd>
+                                </div>
+                            </dl>
+                        </div>
+                        <div class="bg-gray-50 px-4 py-4 sm:px-6 flex justify-end">
+                            <button onclick="toggleModal()" class="inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150">
+                                Make an Offer
+                            </button>
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = `<div class="p-10 text-center text-red-500">Task not found.</div>`;
+                }
+            } else {
+                // Fallback if accessed directly without ID or generic view
+                const container = document.getElementById('task-details-container');
+                container.innerHTML = `<div class="p-10 text-center text-gray-500">Please select a task from the <a href="browse-tasks.html" class="text-blue-600 underline">Browse page</a>.</div>`;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - TaskLanka</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <div id="header-container"></div>
+
+    <main class="flex-grow w-full">
+        <!-- Hero Section -->
+        <div class="bg-blue-600 text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl font-extrabold sm:text-5xl mb-4">Discover what you can get done in Sri Lanka</h1>
+                <p class="text-xl text-blue-100 max-w-2xl mx-auto">Find all kinds of opportunities — from home cleaning
+                    to graphic design.</p>
+                <div class="mt-8">
+                    <a href="post-task.html"
+                        class="inline-block bg-white text-blue-600 font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition shadow-lg">
+                        Post a task for free
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular & Trending Services -->
+        <div class="py-12 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Popular Services -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6" data-i18n="categories.popularServices">Popular
+                            services</h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Removals</span>
+                                <span class="text-sm text-gray-500">10,291 <span data-i18n="categories.jobsPosted">jobs
+                                        posted</span></span>
+                            </li>
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Furniture Removals</span>
+                                <span class="text-sm text-gray-500">7,235 <span data-i18n="categories.jobsPosted">jobs
+                                        posted</span></span>
+                            </li>
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Rubbish Removal</span>
+                                <span class="text-sm text-gray-500">6,868 <span data-i18n="categories.jobsPosted">jobs
+                                        posted</span></span>
+                            </li>
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Cleaning</span>
+                                <span class="text-sm text-gray-500">5,269 <span data-i18n="categories.jobsPosted">jobs
+                                        posted</span></span>
+                            </li>
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Gardening</span>
+                                <span class="text-sm text-gray-500">3,363 <span data-i18n="categories.jobsPosted">jobs
+                                        posted</span></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Trending Services -->
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6" data-i18n="categories.trendingServices">
+                            Trending services</h2>
+                        <ul class="space-y-4">
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Internet Help</span>
+                                <span class="text-green-600 font-bold">144% <span
+                                        data-i18n="categories.growth">growth</span></span>
+                            </li>
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Wedding</span>
+                                <span class="text-green-600 font-bold">141% <span
+                                        data-i18n="categories.growth">growth</span></span>
+                            </li>
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Toilet Seat Fitting</span>
+                                <span class="text-green-600 font-bold">135% <span
+                                        data-i18n="categories.growth">growth</span></span>
+                            </li>
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Floor Repair</span>
+                                <span class="text-green-600 font-bold">133% <span
+                                        data-i18n="categories.growth">growth</span></span>
+                            </li>
+                            <li class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <span class="font-medium text-gray-900">Floor Sanding</span>
+                                <span class="text-green-600 font-bold">128% <span
+                                        data-i18n="categories.growth">growth</span></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Locations -->
+        <div class="py-12 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-8" data-i18n="categories.popularLocations">Popular
+                    locations in Sri Lanka</h2>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div
+                        class="group relative rounded-lg overflow-hidden h-48 cursor-pointer shadow-md hover:shadow-xl transition">
+                        <img src="https://images.unsplash.com/photo-1590716209695-9d5d90ad2b43?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Colombo"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition"></div>
+                        <div class="absolute bottom-4 left-4 text-white font-bold text-lg">Colombo</div>
+                    </div>
+                    <div
+                        class="group relative rounded-lg overflow-hidden h-48 cursor-pointer shadow-md hover:shadow-xl transition">
+                        <img src="https://images.unsplash.com/photo-1546708773-e57c8491884e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Kandy"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition"></div>
+                        <div class="absolute bottom-4 left-4 text-white font-bold text-lg">Kandy</div>
+                    </div>
+                    <div
+                        class="group relative rounded-lg overflow-hidden h-48 cursor-pointer shadow-md hover:shadow-xl transition">
+                        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Galle"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition"></div>
+                        <div class="absolute bottom-4 left-4 text-white font-bold text-lg">Galle</div>
+                    </div>
+                    <div
+                        class="group relative rounded-lg overflow-hidden h-48 cursor-pointer shadow-md hover:shadow-xl transition">
+                        <img src="https://images.unsplash.com/photo-1532415849880-928cc7e089d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Negombo"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition"></div>
+                        <div class="absolute bottom-4 left-4 text-white font-bold text-lg">Negombo</div>
+                    </div>
+                    <div
+                        class="group relative rounded-lg overflow-hidden h-48 cursor-pointer shadow-md hover:shadow-xl transition">
+                        <img src="https://images.unsplash.com/photo-1588258524675-c6198f860180?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Jaffna"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition"></div>
+                        <div class="absolute bottom-4 left-4 text-white font-bold text-lg">Jaffna</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Categories -->
+        <div class="py-16 bg-white" id="all-categories-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-12 border-b pb-4" data-i18n="categories.browseAll">
+                    Browse all categories</h2>
+
+                <!-- Quick Links Container -->
+                <div id="quick-links" class="mb-12 flex flex-wrap gap-2 text-sm justify-center">
+                    <!-- Dynamic Links will be inserted here -->
+                </div>
+
+                <!-- Categories List Container -->
+                <div id="categories-container" class="space-y-16">
+                    <!-- Dynamic Content will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <script src="assets/js/categories-data.js"></script>
+
+        <script>
+            function renderCategories() {
+                const container = document.getElementById('categories-container');
+                const quickLinks = document.getElementById('quick-links');
+
+                // Clear existing content to avoid duplicates on re-render
+                container.innerHTML = '';
+                quickLinks.innerHTML = '';
+
+                const popularTasksLabel = t('categories.popularTasks'); // Dynamic translation for JS rendered content
+
+                if (typeof categoriesData !== 'undefined') {
+                    categoriesData.forEach(category => {
+                        // Create Quick Link
+                        const link = document.createElement('a');
+                        link.href = `#${category.id}`;
+                        link.className = "px-3 py-1 bg-gray-100 rounded-full hover:bg-blue-100 hover:text-blue-600 transition mb-2";
+                        link.textContent = category.name;
+                        quickLinks.appendChild(link);
+
+                        // Create Category Section
+                        const section = document.createElement('div');
+                        section.className = "flex flex-col md:flex-row gap-8 items-start border-t pt-10 first:border-0 first:pt-0";
+                        section.id = category.id;
+
+                        // Generate Tasks HTML
+                        const tasksHtml = category.tasks.map(task =>
+                            `<a href="post-task.html?category=${category.id}&task=${encodeURIComponent(task)}" class="text-blue-600 hover:text-blue-800 hover:underline block truncate" title="${task}">${task}</a>`
+                        ).join('');
+
+                        section.innerHTML = `
+                            <div class="md:w-1/3">
+                                <img src="${category.image}" alt="${category.name}" class="w-full h-48 object-cover rounded-lg shadow-md mb-4 bg-gray-200">
+                                <h3 class="text-2xl font-bold text-gray-900">${category.name}</h3>
+                                <p class="text-gray-600 mt-2 text-sm leading-relaxed">${category.description}</p>
+                            </div>
+                            <div class="md:w-2/3 w-full">
+                                <h4 class="font-semibold text-gray-900 mb-4 uppercase tracking-wider text-xs border-b pb-2">${popularTasksLabel}</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-3">
+                                    ${tasksHtml}
+                                </div>
+                            </div>
+                        `;
+                        container.appendChild(section);
+                    });
+                }
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                // Initial Render
+                // Timeout to ensure translations.js runs first and sets defaults
+                setTimeout(() => {
+                    const savedLang = localStorage.getItem('tasklanka-lang') || 'en';
+                    setLanguage(savedLang); // This triggers updatePageContent() and renders headers/footers
+                    renderCategories();     // Manually trigger own content render
+                }, 10);
+
+                // Listen for language changes to re-render dynamic parts if needed
+                window.addEventListener('languageChanged', (e) => {
+                    renderCategories();
+                });
+            });
+        </script>
+
+    </main>
+
+    <div id="footer-container"></div>
+    <script src="assets/js/translations.js"></script>
+    <script src="assets/js/components.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
